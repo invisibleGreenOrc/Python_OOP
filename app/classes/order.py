@@ -23,3 +23,6 @@ class Order:
     
     def __str__(self):
         return f"Заказ с продуктами:\n{'\n'.join(f"- {product}" for product in self.__products)}\nЦена заказа: {self.get_price()}"
+    
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.__products})"
