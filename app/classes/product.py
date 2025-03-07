@@ -11,4 +11,4 @@ class Product:
         return self.__price
 
     def __str__(self):
-        return f"Продукт (Название={self.__name}, Цена={self.__price})"
+        return f"Продукт: {self.__name}, цена: {self.__price}"

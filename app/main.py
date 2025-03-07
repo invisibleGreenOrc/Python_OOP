@@ -17,3 +17,5 @@ print(order2.get_price())
 
 print(Order.total_orders_price())
 print(Order.total_orders_count())
+
+print(order2)

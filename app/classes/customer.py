@@ -9,4 +9,4 @@ class Customer:
         self.__orders : list[Order]
 
     def __str__(self):
-        return f"Клиент (Имя={self.__name}, заказы:\n{self.__orders})"
+        return f"Клиент: {self.__name}, заказы:\n{self.__orders})"

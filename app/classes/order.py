@@ -4,7 +4,6 @@ class Order:
     """
     Order - класс, представляющий заказ.
     """
-
     _orders = []
 
     def __init__(self, products: list[Product]):
@@ -23,4 +22,4 @@ class Order:
         return sum([product.price for product in self.__products])
     
     def __str__(self):
-        return f"Заказ с продуктами ({self.__products})"
+        return f"Заказ с продуктами:\n{'\n'.join(f"- {product}" for product in self.__products)}\nЦена заказа: {self.get_price()}"
