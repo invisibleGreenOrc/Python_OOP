@@ -4,7 +4,7 @@ class Order:
     """
     Order - класс, представляющий заказ.
     """
-    _orders = []
+    _orders : list["Order"] = []
 
     def __init__(self, products: list[Product]):
         self.__products = products
