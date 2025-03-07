@@ -1,6 +1,9 @@
 from classes.order import Order
 from classes.customer import Customer
 from classes.product import Product
+from classes.discount import Discount
+
+# Создаем продукты, заказы, клиентов
 
 product1 = Product("Laptop 1", 1000)
 product2 = Product("Laptop 2", 1500)
@@ -17,17 +20,41 @@ order4 = Order([product1, product2, product6])
 customer1 = Customer("Иван")
 customer2 = Customer("Сергей")
 
+# Добавляем заказы к клиентам
+
 customer1.add_order([order1])
 customer2.add_order([order2, order3, order4])
 
-print(order1)
-print(order2)
-print(order3)
-print(order4)
 
-print(f"\nОбщая сумма всех заказов: {Order.total_orders_price()}")
-print(f"\nОбщее количество заказов: {Order.total_orders_count()}")
+print("Применяем скидки:")
+print(f"{product1}, цена со скидкой 15 %: {Discount.calculate_discounted_price(1000, 15)}")
+print(f"{product1}, цена со скидкой 'season_discount': {Discount.calculate_discounted_price_by_name(1000, ["season_discount"])}")
+print(f"{product1}, цена со скидкой 'season_discount', 'promocode_discount': {Discount.calculate_discounted_price_by_name(1000, ["season_discount", "promocode_discount"])}")
 
+print("\nОбщая информация по всем заказам:")
+print(f"Общая сумма всех заказов: {Order.total_orders_price()}")
+print(f"Общее количество заказов: {Order.total_orders_count()}")
 
+print("\nИнформация о товарах, заказах, покупателях:")
+print(customer1, "\n")
+print(customer2, "\n")
 
-print(customer2)
+# Добавляем скидки в заказы
+
+order1.add_discounts(["season_discount", "promocode_discount"])
+order2.add_discounts(["season_discount"])
+
+# Выводим информацию, проверяем, что изменились суммы в заказе, изменилась общая сумма всех заказов всех клиентов
+
+print("После применения скидок\n")
+print(customer1, "\n")
+print(customer2, "\n")
+print(f"Общая сумма всех заказов: {Order.total_orders_price()}\n")
+
+# Проверяем, как работает сравнение продуктов 
+
+print(product1 < product2)
+print(product1 == product2)
+print(product1 > product2)
+
+print(repr(customer1))
