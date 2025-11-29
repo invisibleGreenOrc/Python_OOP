@@ -4,8 +4,11 @@ class ShoppingCart:
     """
     Класс, представляющий корзину покупок.
     """
-    def __init__(self):
+    def __init__(self, customer):
         self.items = []
+        self.customer = customer
+        self.salesperson = None
+        self.is_paid = False
 
     def add_item(self, product, quantity):
         """
@@ -31,7 +34,22 @@ class ShoppingCart:
         Возвращает детализированную информацию о содержимом корзины и общей стоимости.
         """
         details = "Корзина покупок:\n"
+        details += f"{self.customer.get_details()}\n"
+
         for item in self.items:
             details += f"{item['Продукт'].get_details()}, Количество: {item['количество']}\n"
         details += f"Общее: {self.get_total()} руб"
+
+        if self.is_paid:
+            details += "\nВсе покупки оплачены."
+            if self.salesperson is not None:
+                details += f"\nПродавец: {self.salesperson.get_details()}"
+
         return details
+    
+    def confirm_payment(self, salesperson):
+        """
+        Подтверждает оплату всех товаров корзины.
+        """
+        self.is_paid = True
+        self.salesperson = salesperson
