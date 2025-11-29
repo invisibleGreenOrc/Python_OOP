@@ -34,3 +34,15 @@ class Clothing(Product):
 
     def get_details(self):
         return f"Одежда: {self.name}, Размер: {self.size}, Материал: {self.material}, Цена: {self.price} руб."
+    
+class Household_Chemicals(Product):
+    """
+    Класс, представляющий быьлвую химию, наследующий класс Product.
+    """
+    def __init__(self, name, price, form, scent):
+        super().__init__(name, price)
+        self.form = form
+        self.scent = scent
+
+    def get_details(self):
+        return f"Бытовая химия: {self.name}, Форма выпуска: {self.form}, Запах: {self.scent}, Цена: {self.price} руб."
